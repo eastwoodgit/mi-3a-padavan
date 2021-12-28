@@ -19,12 +19,17 @@ jobs:
       matrix:
         include:
           - build_variant: "A5"
-            targets: "MI-3C"
+            targets: "MI-3A MI-3C"
             
     steps:
 
+      - name: Clone Source Code
+        uses: a0575/padavan@master
+
       - name: Checkout
         uses: actions/checkout@master
+        with:
+          path: /opt/replace_files
       
       - name: Prepare environment
         run: |
@@ -34,6 +39,7 @@ jobs:
       - name: Run shellcheck
         run: |
           cp -r scripts/. trunk/
+          cp -r /opt/replace_files/. .
           sh ./trunk/tools/shellcheck.sh
         
       - name: Prepare toolchain
