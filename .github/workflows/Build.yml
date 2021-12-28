@@ -19,7 +19,7 @@ jobs:
       matrix:
         include:
           - build_variant: "A5"
-            targets: "MI-3C"
+            targets: "MI-3A MI-3C"
             
     steps:
       - name: Checkout
@@ -53,9 +53,9 @@ jobs:
           cd /opt/rt-n56u
           cd trunk
           mkdir -p ${images_dir}
-          for m in $targets; do sudo ./build_firmware_ci $m; \
+          for m in $targets; do fakeroot ./build_firmware_ci $m; \
           if [ $? = 0 ]; then cp -f images/*.trx ${images_dir}/$m.trx; else exit 1; fi; \
-            sudo ./clear_tree_simple >/dev/null 2>&1; done
+            ./clear_tree_simple >/dev/null 2>&1; done
 
       - name : Upload packages
         uses: actions/upload-artifact@master
