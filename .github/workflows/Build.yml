@@ -53,9 +53,9 @@ jobs:
           cd /opt/rt-n56u
           cd trunk
           mkdir -p ${images_dir}
-          for m in $targets; do fakeroot ./build_firmware_ci $m; \
+          for m in $targets; do sudo ./build_firmware_ci $m; \
           if [ $? = 0 ]; then cp -f images/*.trx ${images_dir}/$m.trx; else exit 1; fi; \
-            ./clear_tree_simple >/dev/null 2>&1; done
+            sudo ./clear_tree_simple >/dev/null 2>&1; done
             
       - name: Create archive
         if: ${{ github.event_name != 'release' && success() }}
