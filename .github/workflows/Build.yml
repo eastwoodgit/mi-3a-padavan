@@ -19,9 +19,7 @@ jobs:
       matrix:
         include:
           - build_variant: "A1"
-            targets: "MI-3A"
-          - build_variant: "A2"
-            targets: "MI-3C"
+            targets: "R6220"
             
     steps:
       - name: Checkout
@@ -29,9 +27,7 @@ jobs:
 
       - name: Clone source code
         run: |
-          #git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
-          #git clone --depth=1 https://github.com/hiboyhiboy/rt-n56u.git /opt/rt-n56u
-          git clone --depth=1 https://github.com/a0575/padavan.git /opt/rt-n56u
+          git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
           cp -rf . /opt/rt-n56u
           cd /opt/rt-n56u
 
