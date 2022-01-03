@@ -19,7 +19,7 @@ jobs:
       matrix:
         include:
           - build_variant: "A1"
-            targets: "R6220"
+            targets: "MI-3"
             
     steps:
       - name: Checkout
