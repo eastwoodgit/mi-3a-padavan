@@ -22,8 +22,10 @@ jobs:
             targets: "MI-3A"
           - build_variant: "A2"
             targets: "MI-3C"
-          - build_variant: "A2"
+          - build_variant: "A3"
             targets: "PSG1218"
+          - build_variant: "A4"
+            targets: "JCG-Q20"
             
     steps:
       - name: Checkout
