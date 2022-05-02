@@ -22,12 +22,16 @@ jobs:
             
     steps:
       - name: 展开分支
-        uses: actions/checkout@padavan-4.4
+        uses: actions/checkout@master
+        with:
+          ref: padavan-4.4
 
       - name: 克隆源码
-        run: |
-          git clone --depth=1 https://github.com/hanwckf/padavan-4.4.git /opt/padavan-4.4
-          cp -rf . /opt/padavan-4.4
+        uses: actions/checkout@master
+        with:
+          repository: hanwckf/padavan-4.4
+          fetch-depth: 1
+          path: /opt/padavan-4.4
 
       - name: 准备环境
         run: |
