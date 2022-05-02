@@ -1,9 +1,9 @@
 ##################################################################
 # Board PID # Board Name       # PRODUCT # Note
 ##################################################################
-# Q10_Pro   # Q10_Pro          # MT7621  #
+# Q20       # Q20              # MT7621  #
 ##################################################################
 
-CFLAGS += -DBOARD_Q10_PRO -DBOARD_MT7915_DBDC
+CFLAGS += -DBOARD_Q20 -DBOARD_MT7915_DBDC
 BOARD_NUM_USB_PORTS=0
 CONFIG_BOARD_RAM_SIZE=256
