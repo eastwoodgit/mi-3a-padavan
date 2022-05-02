@@ -21,27 +21,27 @@ jobs:
             targets: "JCG-Q10_Pro"
             
     steps:
-      - name: 展开分支
-        uses: actions/checkout@master
-        with:
-          ref: padavan-4.4
-
       - name: 克隆源码
         uses: actions/checkout@master
         with:
           repository: hanwckf/padavan-4.4
           fetch-depth: 1
+
+      - name: 展开分支
+        uses: actions/checkout@master
+        with:
+          ref: padavan-4.4
           path: padavan-4.4
 
       - name: 准备环境
         run: |
           sudo apt-get update
           sudo apt-get install libtool-bin gperf python3-docutils autopoint gettext
-          cp -rf ${GITHUB_WORKSPACE}/. ${GITHUB_WORKSPACE}/padavan-4.4
+          cp -rf ${GITHUB_WORKSPACE}/padavan-4.4/. ${GITHUB_WORKSPACE}
         
       - name: 环境检查
         run: |
-          cd ${GITHUB_WORKSPACE}/padavan-4.4
+          cd ${GITHUB_WORKSPACE}
           sh ./trunk/tools/shellcheck.sh
         
       - name: 准备工具
