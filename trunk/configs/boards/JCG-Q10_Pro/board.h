@@ -1,7 +1,7 @@
 
 #define BOARD_PID		"JCG-Q10_Pro"
-#define BOARD_NAME		"JCG-Q10 Pro"
-#define BOARD_DESC		"JCG-Q10 Pro Wireless Router"
+#define BOARD_NAME		"JCG-Q10_Pro"
+#define BOARD_DESC		"JCG-Q10_Pro Wireless Router"
 #define BOARD_VENDOR_NAME	"JCG"
 #define BOARD_VENDOR_URL	"http://www.jcgcn.com/"
 #define BOARD_MODEL_URL		"http://www.jcgcn.com/"
@@ -11,8 +11,8 @@
 #define BOARD_GPIO_BTN_WPS	16
 #undef  BOARD_GPIO_LED_ALL
 #undef  BOARD_GPIO_LED_WIFI
-#define BOARD_GPIO_LED_WAN	15
-#define BOARD_GPIO_LED_POWER	14	/* sys_blue: 15, sys_red: 14 */
+#define BOARD_GPIO_LED_WAN	15	/* greed: 15 */
+#define BOARD_GPIO_LED_POWER	16	/* red: 16 */
 #undef  BOARD_GPIO_LED_LAN
 #undef  BOARD_GPIO_LED_USB
 #undef  BOARD_GPIO_LED_ROUTER
