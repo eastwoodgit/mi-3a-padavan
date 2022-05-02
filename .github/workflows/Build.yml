@@ -25,7 +25,7 @@ jobs:
           - build_variant: "A3"
             targets: "PSG1218"
           - build_variant: "A4"
-            targets: "JCG-Q10-Pro"
+            targets: "JCG-Q10_Pro"
             
     steps:
       - name: Checkout
