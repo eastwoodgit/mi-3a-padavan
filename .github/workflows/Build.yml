@@ -25,7 +25,6 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: padavan-4.4
-          path: my-router
 
       - name: 克隆源码
         uses: actions/checkout@master
