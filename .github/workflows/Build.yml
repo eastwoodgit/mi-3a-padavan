@@ -25,32 +25,34 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: padavan-4.4
+          path: my-router
 
       - name: 克隆源码
         uses: actions/checkout@master
         with:
           repository: hanwckf/padavan-4.4
           fetch-depth: 1
-          path: /opt/padavan-4.4
+          path: padavan-4.4
 
       - name: 准备环境
         run: |
           sudo apt-get update
           sudo apt-get install libtool-bin gperf python3-docutils autopoint gettext
+          cp -rf ${GITHUB_WORKSPACE}/. ${GITHUB_WORKSPACE}/padavan-4.4
         
       - name: 环境检查
         run: |
-          cd /opt/padavan-4.4
+          cd ${GITHUB_WORKSPACE}/padavan-4.4
           sh ./trunk/tools/shellcheck.sh
         
       - name: 准备工具
         run: |
-          cd /opt/padavan-4.4/toolchain-mipsel
+          cd ${GITHUB_WORKSPACE}/toolchain-mipsel
           sh dl_toolchain.sh
         
       - name: 开始编译
         run: |
-          cd /opt/padavan-4.4/trunk
+          cd ${GITHUB_WORKSPACE}/trunk
           mkdir -p ${images_dir}
           for m in $targets; do fakeroot ./build_firmware_ci $m; \
           if [ $? = 0 ]; then cp -f images/*.trx ${images_dir}/$m.trx; else exit 1; fi; \
