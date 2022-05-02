@@ -25,6 +25,8 @@ jobs:
           - build_variant: "A3"
             targets: "PSG1218"
           - build_variant: "A4"
+            targets: "CR660x"
+          - build_variant: "A5"
             targets: "JCG-Q20"
             
     steps:
