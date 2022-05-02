@@ -1,0 +1,60 @@
+name: 编译固件
+
+on: 
+  repository_dispatch:
+  workflow_dispatch:
+  #schedule:
+    #- cron: 0 23 * * 5
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-20.04
+    env:
+      build_variant: ${{ matrix.build_variant }}
+      targets: ${{ matrix.targets }}
+      images_dir: /opt/images
+    strategy:
+      matrix:
+        include:
+          - build_variant: "A1"
+            targets: "JCG-Q10_Pro"
+            
+    steps:
+      - name: 展开分支
+        uses: actions/checkout@master
+
+      - name: 克隆源码
+        run: |
+          git clone --depth=1 https://github.com/hanwckf/padavan-4.4.git /opt/padavan-4.4
+          cp -rf . /opt/padavan-4.4
+
+      - name: 准备环境
+        run: |
+          sudo apt-get update
+          sudo apt-get install libtool-bin gperf python3-docutils autopoint gettext
+        
+      - name: 环境检查
+        run: |
+          cd /opt/padavan-4.4
+          sh ./trunk/tools/shellcheck.sh
+        
+      - name: 准备工具
+        run: |
+          cd /opt/padavan-4.4/toolchain-mipsel
+          sh dl_toolchain.sh
+        
+      - name: 开始编译
+        run: |
+          cd /opt/padavan-4.4/trunk
+          mkdir -p ${images_dir}
+          for m in $targets; do fakeroot ./build_firmware_ci $m; \
+          if [ $? = 0 ]; then cp -f images/*.trx ${images_dir}/$m.trx; else exit 1; fi; \
+          ./clear_tree_simple >/dev/null 2>&1; done
+
+      - name : 上传镜像
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: Padavan-4.4-packages
+          path: /opt/images
