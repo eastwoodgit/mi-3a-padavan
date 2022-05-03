@@ -4,5 +4,5 @@
 * 默认 Wi-Fi 密码：123467890
 
 ### 支持机型 ###
-* 本仓库仅增加 JCG Q10 Pro 的支持，更多信息请访问上游仓库
+* 本仓库仅增加 JCG Q10 Pro 的支持（需刷入 CR660x 的 PB-Boot），更多信息请访问上游仓库
 * https://github.com/hanwckf/padavan-4.4
