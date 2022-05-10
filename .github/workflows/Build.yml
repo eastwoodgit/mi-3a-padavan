@@ -19,6 +19,8 @@ jobs:
         include:
           - build_variant: "A1"
             targets: "JCG-Q10_Pro"
+          - build_variant: "B1"
+            targets: "CR660x"
             
     steps:
       - name: 克隆源码
