@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: 编译固件
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       build_variant: ${{ matrix.build_variant }}
       targets: ${{ matrix.targets }}
